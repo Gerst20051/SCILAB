@@ -1,0 +1,15 @@
+#!/bin/sh
+set -x
+
+git clone git://siptoolbox.git.sourceforge.net/gitroot/siptoolbox/animal
+git clone git://siptoolbox.git.sourceforge.net/gitroot/siptoolbox/siptoolbox
+
+cd animal
+./autogen.sh
+./configure && make && sudo make install
+sudo ldconfig
+
+cd ../siptoolbox
+./autogen.sh
+./configure && make && sudo make install
+make autoload
